@@ -2,84 +2,141 @@
 <head>
 	<title>Diet Rotten Tomatoes</title>
 	<script type="text/javascript" src="jQuery.js"></script>
-	<style>
-	body{
-		width:960px;
-		margin:0 auto;
-		font-family:sans-serif;
-	}
+<style>
 
-	h2{
-		font-size:3em;
-	}
+body{
+width:90%;
+font-family:sans-serif;
+}
 
-	.theater{
-		float:left;
-		width:400px;
-	}
+h2{
+font-size:3em;
+text-align: center;
+margin:0;
+margin:35px 0 35px 0;
+}
 
-	.dvd{
-		float:right;
-		width:400px;
-	}
+.movie_search{
+width:100%;
+height: 40px;
+font-size: 35px;
+}
 
-	.movie_search{
-		width:100%;
-		height: 40px;
-		font-size: 35px;
-	}
+.credits{
+clear:both;
+font-size:11px;
+text-align:center;
+margin-top:25px;
+}
 
-	.credits{
-		clear:both;
-		font-size:11px;
-		text-align:center;
-		margin-top:25px;
-	}
+.number {
+font-weight: bold;
+font-size: 1em;
+}
 
-	.number {
-	font-weight: bold;
-	font-size: 1.1em;
-	}
+.movie{
+font-size:2em;
+}
 
-	.movie{
-	font-size:2em;
-	height:500px;
-	border-bottom:1px solid #ccc;
-	}
+.dvd .movie:last-child, .theater .movie:last-child{
+border-bottom:none;
+}
 
-	.dvd .movie:last-child, .theater .movie:last-child{
-	border-bottom:none;
-	}
+.movie p a:first-child{
+display: block;
+}
 
-	.movie p a:first-child{
-	display: block;
-	}
+.red{
+background-color: red;
+color: white;
+border-radius: 50%;
+height: 40px;
+width: 40px;
+display: block;
+text-align: center;
+padding: 20px;
+}
 
-	a:visited, a:hover, a{
-	color:black;
-	}
+.green{
+background-color: green;
+color: white;
+border-radius: 50%;
+height: 40px;
+width: 40px;
+display: block;
+text-align: center;
+padding: 20px;
+}
 
-	a.title{
-	height:70px;
-	display: block;
-	}
+img{
+width:80%;
+}
 
-	</style>
+.movie > p{
+text-align: center;
+margin-bottom:0;
+}
+
+.rating {
+text-align: center;
+margin-top: 25px;
+}
+
+a:visited, a:hover, a{
+color:black;
+}
+
+a.title{
+display: block;
+}
+
+.score{
+width: 71%;
+margin: 0 auto;
+}
+
+.clear{
+clear:both;
+}
+
+.score p{
+float: left;
+padding-right: 25px;
+margin:20px 0 50px 0;
+}
+
+.score p:last-child{
+padding-right: 0;
+}
+
+@media (min-width:320px){
+.score{
+width: 61%;
+}
+}
+
+@media (min-width:480px){
+.score{
+width: 36%;
+}
+}
+
+</style>
 </head>
 <body>
 <form id="search">
 	<label for="search"></label>
 		<input class="movie_search" type="text" name="search" value="" placeholder="Toy Story 3">
 </form>
-<div class="results">
+<div class="results clear">
 </div>
-<div class="theater">
+<div class="theater clear">
 	<h2>Theaters</h2>
 </div>
-<div class="dvd">
+<div class="dvd clear">
 	<h2>DVD</h2>
 </div>
-<div class="credits">
+<div class="credits clear">
 	All data provided by <a href="http://www.rottentomatoes.com/" alt="Rotten Tomatoes">Rotten Tomatoes</a>.
 </div>
 </body>
@@ -94,7 +151,7 @@ var cleanRT = {
 		$.getJSON("http://api.rottentomatoes.com/api/public/v1.0/movies.json?apikey=bfsqfcdktj8yt8bvu2d2fzq2&page_limit=5&q=" + searched + "&callback=?", function(data) {
 			$.each(data.movies, function(i, movies) {
 	        var movie_obj = movies;
-	        $('.results').append("<div class='movie'>" + "<p><a href='" + movie_obj.posters.original + "'><img src='" + movie_obj.posters.thumbnail + "' /></a><a class='title' target=_blank href='" + movie_obj.links.alternate + "'>" + movie_obj.title + "</a></p>" + "<div class='meta'><div class='rating'>" + movie_obj.mpaa_rating + "</div><div class='score'><p>Critics: <span class='number'>" + movie_obj.ratings.critics_score + "&#37;" + "<span></p><p>Users: <span class='number'>" + movie_obj.ratings.audience_score + "&#37;" + "<span></p></div></div>");
+	        $('.results').append("<div class='movie'>" + "<p><a href='" + movie_obj.posters.original + "'><img src='" + movie_obj.posters.detailed + "' /></a><a class='title' target=_blank href='" + movie_obj.links.alternate + "'>" + movie_obj.title + "</a></p>" + "<div class='meta'><div class='rating'>" + movie_obj.mpaa_rating + "</div><div class='score'><p><span class='number'>" + movie_obj.ratings.critics_score + "&#37;" + "<span></p><p><span class='number'>" + movie_obj.ratings.audience_score + "&#37;" + "<span></p></div></div>");
     		});
 		});
 
@@ -103,7 +160,7 @@ var cleanRT = {
 		$.getJSON('http://api.rottentomatoes.com/api/public/v1.0/lists/movies/box_office.json?apikey=bfsqfcdktj8yt8bvu2d2fzq2&limit=5&country=us&callback=?', function(data) {
 			$.each(data.movies, function(i, movies) {
 	        var movie_obj = movies;
-	        $('.theater').append("<div class='movie'>" + "<p><a href='" + movie_obj.posters.original + "'><img src='" + movie_obj.posters.thumbnail + "' /></a><a class='title' target=_blank href='" + movie_obj.links.alternate + "'>" + movie_obj.title + "</a></p>" + "<div class='meta'><div class='rating'>" + movie_obj.mpaa_rating + "</div><div class='score'><p>Critics: <span class='number'>" + movie_obj.ratings.critics_score + "&#37;" + "</span></p><p>Users: <span class='number'>" + movie_obj.ratings.audience_score + "&#37;" + "</span></p></div></div>");
+	        $('.theater').append("<div class='movie'>" + "<p><a href='" + movie_obj.posters.original + "'><img src='" + movie_obj.posters.detailed + "' /></a><a class='title' target=_blank href='" + movie_obj.links.alternate + "'>" + movie_obj.title + "</a></p>" + "<div class='meta'><div class='rating'>" + movie_obj.mpaa_rating + "</div><div class='score'><p><span class='number'>" + movie_obj.ratings.critics_score + "&#37;" + "</span></p><p><span class='number'>" + movie_obj.ratings.audience_score + "&#37;" + "</span></p></div></div>");
     		});
 
 	});
@@ -112,7 +169,7 @@ var cleanRT = {
 		$.getJSON('http://api.rottentomatoes.com/api/public/v1.0/lists/dvds/top_rentals.json?apikey=bfsqfcdktj8yt8bvu2d2fzq2&limit=5&country=us&callback=?', function(data) {
 			$.each(data.movies, function(i, movies) {
 		        var movie_obj = movies;
-		        $('.dvd').append("<div class='movie'>" + "<p><a href='" + movie_obj.posters.original + "'><img src='" + movie_obj.posters.thumbnail + "' /></a><a class='title' target=_blank href='" + movie_obj.links.alternate + "'>" + movie_obj.title + "</a></p>" + "<div class='meta'><div class='rating'>" + movie_obj.mpaa_rating + "</div><div class='score'><p>Critics: <span class='number'>" + movie_obj.ratings.critics_score + "&#37;" + "</span></p><p>Users: <span class='number'>" + movie_obj.ratings.audience_score + "&#37;" + "</span></p></div></div>");
+		        $('.dvd').append("<div class='movie'>" + "<p><a href='" + movie_obj.posters.original + "'><img src='" + movie_obj.posters.detailed + "' /></a><a class='title' target=_blank href='" + movie_obj.links.alternate + "'>" + movie_obj.title + "</a></p>" + "<div class='meta'><div class='rating'>" + movie_obj.mpaa_rating + "</div><div class='score'><p><span class='number'>" + movie_obj.ratings.critics_score + "&#37;" + "</span></p><p><span class='number'>" + movie_obj.ratings.audience_score + "&#37;" + "</span></p></div></div>");
 	    	});
 	});
 	}
