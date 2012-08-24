@@ -3,6 +3,7 @@
 	<title>Diet Rotten Tomatoes</title>
 	<script type="text/javascript" src="jQuery.js"></script>
 	<meta name="viewport" content="width=device-width, target-densitydpi=160dpi, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
 <style>
 
 body{
@@ -21,6 +22,7 @@ margin:35px 0 35px 0;
 width:90%;
 height: 40px;
 font-size: 35px;
+margin-top:25px;
 }
 
 .credits{
@@ -37,10 +39,6 @@ font-size: 1em;
 
 .movie{
 font-size:2em;
-}
-
-.dvd .movie:last-child, .theater .movie:last-child{
-border-bottom:none;
 }
 
 .movie p a:first-child{
@@ -120,6 +118,51 @@ width: 61%;
 .score{
 width: 36%;
 }
+}
+
+@media (min-width:547px){
+
+body{
+width:960px;
+margin:0 auto;
+}
+
+.theater{
+float:left;
+width:400px;
+}
+
+.dvd{
+float:right;
+width:400px;
+}
+
+.movie_search{
+width:100%;
+}
+
+.clear{
+clear:none;
+}
+
+.credits.clear{
+clear:both;
+}
+
+.score{
+width:100%;
+}
+
+.score p{
+float: left;
+padding-right: 25px;
+margin:0;
+}
+
+.movie{
+min-height:700px;
+}
+
 }
 
 </style>
