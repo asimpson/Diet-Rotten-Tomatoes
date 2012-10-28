@@ -38,26 +38,12 @@ font-size:2em;
 display: block;
 }
 
-.red{
-background-color: red;
-color: white;
-border-radius: 50%;
-height: 40px;
-width: 40px;
-display: block;
-text-align: center;
-padding: 20px;
+.fresh{
+color:red;
 }
 
-.green{
-background-color: green;
-color: white;
-border-radius: 50%;
-height: 40px;
-width: 40px;
-display: block;
-text-align: center;
-padding: 20px;
+.rotten{
+color:green;
 }
 
 img{
