@@ -26,6 +26,7 @@ margin-top:25px;
 }
 
 .number {
+display: block;
 font-weight: bold;
 font-size: 1em;
 }
@@ -89,13 +90,13 @@ padding-right: 0;
 
 @media (min-width:320px){
 .score{
-width: 61%;
+width: 80%;
 }
 }
 
 @media (min-width:480px){
 .score{
-width: 36%;
+width: 56%;
 }
 }
 
@@ -129,7 +130,9 @@ clear:both;
 }
 
 .score{
-width:100%;
+width: 60%;
+margin: 0 auto;
+margin-top: 1em;
 }
 
 .score p{
