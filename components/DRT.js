@@ -1,18 +1,21 @@
 import React from 'react';
 import JSONP from 'browser-jsonp';
+import MovieList from './MovieList';
+import Search from './Search';
 
 const key = 'bfsqfcdktj8yt8bvu2d2fzq2'
 const apiEndpoint = 'http://api.rottentomatoes.com/api/public/v1.0'
 const boxOfficeUrl = `${apiEndpoint}/lists/movies/box_office.json?apikey=${key}&limit=5&country=us`;
 const dvdUrl = `${apiEndpoint}/lists/dvds/top_rentals.json?apikey=${key}&limit=5&country=us`;
-//search - movies.json?apikey=bfsqfcdktj8yt8bvu2d2fzq2&page_limit=5&q=" + searched + "&callback=?"
+const searchUrl = `${apiEndpoint}/movies.json?apikey=${key}&limit=5&country=us&q=`; 
 
 class DRT extends React.Component {
   constructor(props) {
-    super(props);
+    super();
     this.state = {
       'dvds': '',
-      'boxOffice': ''
+      'boxOffice': '',
+      'searchResults': ''
     };
   }
 
@@ -31,8 +34,14 @@ class DRT extends React.Component {
   }
 
   render () {
-    console.log(this.state);
-    return <span>You did React!</span>
+    return (
+      <div>
+        <Search />
+        <MovieList data={this.state.searchResults} />
+        <MovieList data={this.state.boxOffice} />
+        <MovieList data={this.state.dvds} />
+      </div>
+    );
   }
 };
 

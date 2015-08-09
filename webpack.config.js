@@ -1,7 +1,13 @@
+var webpack = require('webpack')
+
 module.exports = {
-  entry: "./app.js",
+  entry: [
+    'webpack-dev-server/client?http://0.0.0.0:3000',
+    'webpack/hot/only-dev-server',
+    './components/DRT.js'
+  ],
   output: {
-    path: './',
+    path: __dirname,
     filename: "rt.js"
   }, 
   module: {
@@ -9,8 +15,12 @@ module.exports = {
       { 
         test: /\.js$/, 
         exclude: /node_modules/,
-        loader: 'babel'
+        loader: 'react-hot!babel'
       }
     ]
-  }
+  },
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin()
+  ]
 };
