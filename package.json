@@ -1,0 +1,31 @@
+{
+  "name": "diet-rotten-tomatoes",
+  "version": "1.0.0",
+  "description": "A wrapper for the Rotten Tomatoes API that provides fast search.",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server --progress --colors"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/asimpson/Diet-Rotten-Tomatoes.git"
+  },
+  "keywords": [
+    "react",
+    "js",
+    "jquery"
+  ],
+  "author": "Adam Simpson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/asimpson/Diet-Rotten-Tomatoes/issues"
+  },
+  "homepage": "https://github.com/asimpson/Diet-Rotten-Tomatoes#readme",
+  "dependencies": {
+    "react": "^0.13.3"
+  },
+  "devDependencies": {
+    "webpack": "^1.11.0"
+  }
+}
