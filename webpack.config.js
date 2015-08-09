@@ -3,5 +3,14 @@ module.exports = {
   output: {
     path: './build',
     filename: "rt.js"
+  }, 
+  module: {
+    loaders: [
+      { 
+        test: /\.js$/, 
+        exclude: /node_modules/,
+        loader: 'babel!jsx-loader'
+      }
+    ]
   }
 };
