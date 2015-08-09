@@ -1,5 +1,6 @@
 import React from 'react';
 import each from 'lodash/collection/each';
+require('../scss/_movie-list.scss');
 
 export default class MovieList extends React.Component {
   constructor(props) {
@@ -10,14 +11,18 @@ export default class MovieList extends React.Component {
     let movieObj = [];
 
     each(this.props.data, (n, key) => {
-      console.log(n);
       let altText = `Poster for ${n.title}`;
       movieObj.push(
         <div key={key} className="movie">
-          <h1>{n.title}</h1>
-          <img src={n.posters.detailed} alt={altText} />
-          <div class="critics-score">{n.ratings.critics_score}</div>
-          <div class="audience-score">{n.ratings.audience_score}</div>
+          <div class="movie">
+            <h1>{n.title}</h1>
+            <img src={n.posters.detailed} alt={altText} />
+          </div>
+          <div class="ratings">
+            <span class="critics-rating">{n.ratings.critics_rating}</span>
+            <span class="critics-score">{n.ratings.critics_score}</span>
+            <span class="audience-score">{n.ratings.audience_score}</span>
+          </div>
         </div>
       );
     });

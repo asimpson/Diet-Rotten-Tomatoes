@@ -1,4 +1,4 @@
-var webpack = require('webpack')
+var webpack = require('webpack');
 
 module.exports = {
   entry: [
@@ -16,6 +16,10 @@ module.exports = {
         test: /\.js$/, 
         exclude: /node_modules/,
         loader: 'react-hot!babel'
+      },
+      {
+        test: /\.scss$/,
+        loader: 'style!css!sass'
       }
     ]
   },

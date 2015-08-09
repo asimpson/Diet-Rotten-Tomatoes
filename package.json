@@ -33,7 +33,11 @@
     "webpack-dev-server": "^1.10.1"
   },
   "devDependencies": {
+    "css-loader": "^0.15.6",
+    "node-sass": "^3.2.0",
     "react-hot-loader": "^1.2.8",
+    "sass-loader": "^2.0.0",
+    "style-loader": "^0.12.3",
     "webpack": "^1.11.0"
   }
 }
