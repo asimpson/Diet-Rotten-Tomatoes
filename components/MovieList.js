@@ -14,13 +14,13 @@ export default class MovieList extends React.Component {
       let altText = `Poster for ${n.title}`;
       movieObj.push(
         <div key={key} className="movie">
+          <h1>{n.title}</h1>
           <div className="movie-media">
-            <h1>{n.title}</h1>
             <img src={n.posters.detailed} alt={altText} />
           </div>
           <div className="movie-ratings">
-            <span className="critics-score">{n.ratings.critics_score}</span>
-            <span className="audience-score">{n.ratings.audience_score}</span>
+            <div className="critics-score">Critics: {n.ratings.critics_score}</div>
+            <div className="audience-score">Audience: {n.ratings.audience_score}</div>
           </div>
         </div>
       );

@@ -2,6 +2,7 @@ import React from 'react';
 import JSONP from 'browser-jsonp';
 import MovieList from './MovieList';
 import Search from './Search';
+require ("../scss/_normalize.scss");
 
 const key = 'bfsqfcdktj8yt8bvu2d2fzq2'
 const apiEndpoint = 'http://api.rottentomatoes.com/api/public/v1.0'
@@ -40,11 +41,21 @@ class DRT extends React.Component {
   }
 
   render () {
+    let searchHeading = '';
+    if (this.state.searchResults === '') {
+      searchHeading = null;
+    } else {
+      searchHeading = <h1>Search Results:</h1>;
+    }
+
     return (
-      <div>
+      <div className="drt">
         <Search onSearch={e => this.searchMovies(e)}/>
+        {searchHeading}
         <MovieList data={this.state.searchResults} />
+        <h2>Box Office:</h2>
         <MovieList data={this.state.boxOffice} />
+        <h2>DVDs:</h2>
         <MovieList data={this.state.dvds} />
       </div>
     );
