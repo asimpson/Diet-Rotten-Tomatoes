@@ -1,4 +1,5 @@
 import React from 'react';
+require ("../scss/_search-box.scss");
 
 export default class Search extends React.Component {
   constructor(props) {
@@ -15,8 +16,12 @@ export default class Search extends React.Component {
     return (
       <form onSubmit={e => this.parseSearch(e)} >
         <label htmlFor="movie-search">Search</label>
-        <input ref="searchBox" reftype="search" name="movie-search" />
-        <input type="submit" value="Search" />
+        <div className="side-by-side--wrapper" >
+          <input placeholder="Search" ref="searchBox" type="search" name="movie-search" className="search-input side-by-side side-by-side--major"/>
+          <span className="side-by-side side-by-side--minor">
+            <input type="submit" value="Search" className="search-button "/>
+          </span>
+        </div>
       </form>
     );
   }

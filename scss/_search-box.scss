@@ -1,0 +1,51 @@
+// These side-by-side classes are adopted 
+// from Bootstrap's Input Groups - http://getbootstrap.com/components/#input-groups
+// see `search.hbs` for an example of how to use these classes
+
+.side-by-side--wrapper {
+  display: table;
+  border-collapse: separate;
+  width: 100%;
+}
+
+.side-by-side {
+  vertical-align: middle;
+  display: table-cell;
+}
+
+.side-by-side--major {
+  float: left;
+  width: 100%;
+}
+
+.side-by-side--minor {
+  white-space: nowrap;
+  width: 1%;
+}
+
+.search-button {
+  appearance: none;
+  -webkit-appearance: none;
+  padding: 1em;
+  border-radius: 0;
+  box-sizing: border-box;
+  border: 1px solid black;
+  font-size: 1em;
+  margin: 0 !important;
+}
+
+.search-input {
+  appearance: none;
+  -webkit-appearance: none;
+  font-size: 1em;
+  padding: 1em;
+  box-sizing: border-box;
+  border: 1px solid black;
+  border-right: none;
+}
+
+label {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}

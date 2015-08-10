@@ -19,7 +19,6 @@ export default class MovieList extends React.Component {
             <img src={n.posters.detailed} alt={altText} />
           </div>
           <div className="movie-ratings">
-            <span className="critics-rating">{n.ratings.critics_rating}</span>
             <span className="critics-score">{n.ratings.critics_score}</span>
             <span className="audience-score">{n.ratings.audience_score}</span>
           </div>
