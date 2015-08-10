@@ -11,7 +11,8 @@ const searchUrl = `${apiEndpoint}/movies.json?apikey=${key}&limit=5&country=us&q
 
 class DRT extends React.Component {
   constructor(props) {
-    super();
+    super(props);
+
     this.state = {
       'dvds': '',
       'boxOffice': '',
@@ -33,10 +34,15 @@ class DRT extends React.Component {
     });
   }
 
+  searchMovies (searchText) {
+    let url = `${searchUrl}${searchText}`;
+    this.fetchMovies(url, "searchResults");
+  }
+
   render () {
     return (
       <div>
-        <Search />
+        <Search onSearch={e => this.searchMovies(e)}/>
         <MovieList data={this.state.searchResults} />
         <MovieList data={this.state.boxOffice} />
         <MovieList data={this.state.dvds} />
