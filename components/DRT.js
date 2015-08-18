@@ -42,7 +42,7 @@ class DRT extends React.Component {
 
   render () {
     let searchHeading = '';
-    if (this.state.searchResults === '') {
+    if (this.state.searchResults === '' || typeof this.state.searchResults === 'undefined') {
       searchHeading = null;
     } else {
       searchHeading = <h1>Search Results:</h1>;
