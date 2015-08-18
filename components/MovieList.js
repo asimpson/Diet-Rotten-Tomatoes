@@ -12,15 +12,18 @@ export default class MovieList extends React.Component {
 
     each(this.props.data, (n, key) => {
       let altText = `Poster for ${n.title}`;
+      let bgStyle = {
+        backgroundImage: `url(${n.posters.detailed})`
+      };
+
       movieObj.push(
         <div key={key} className="movie">
-          <h1>{n.title}</h1>
-          <div className="movie-media">
-            <img src={n.posters.detailed} alt={altText} />
-          </div>
-          <div className="movie-ratings">
-            <div className="critics-score">Critics: {n.ratings.critics_score}</div>
-            <div className="audience-score">Audience: {n.ratings.audience_score}</div>
+          <div style={bgStyle}>
+            <h1>{n.title}</h1>
+            <div className="movie-ratings">
+              <div className="critics-score">Critics: {n.ratings.critics_score}</div>
+              <div className="audience-score">Audience: {n.ratings.audience_score}</div>
+            </div>
           </div>
         </div>
       );

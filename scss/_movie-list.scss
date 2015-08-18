@@ -1,4 +1,5 @@
 .movie {
+  position: relative;
   width: 300px;
   display: inline-block;
   vertical-align: top;
@@ -8,16 +9,21 @@
 
   h1 {
     font-size: 1.5em;
+    width: 100%;
+    color: white;
+    margin-top: 0;
+    margin-bottom: 1em;
+    padding: 0.5em;
+    padding-right: 0;
+    background-color: rgba(0,0,0,.75);
   }
-}
-
-.movie-media {
-  margin-right: 1em;
-  display: inline-block;
-  vertical-align: middle;
 }
 
 .movie-ratings {
   display: inline-block;
   vertical-align: middle;
+  background-color: #000;
+  color: #FFF;
+  padding: 0.5em;
+  margin: 1em 0;
 }

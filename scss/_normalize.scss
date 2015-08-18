@@ -6,3 +6,8 @@ body {
 .drt {
   padding: 0 1em;
 }
+
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
