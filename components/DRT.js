@@ -57,6 +57,9 @@ class DRT extends React.Component {
         <MovieList data={this.state.boxOffice} />
         <h2>DVDs:</h2>
         <MovieList data={this.state.dvds} />
+        <div className="credits clear">
+          All data provided by <a href="http://www.rottentomatoes.com/" alt="Rotten Tomatoes">Rotten Tomatoes</a>.
+        </div>
       </div>
     );
   }
