@@ -3,12 +3,11 @@
   width: 300px;
   display: inline-block;
   vertical-align: top;
-  padding: 1em;
   background-color: #F5F5F5;
   margin: 0.5em;
 
   h1 {
-    font-size: 1.5em;
+    font-size: 1.3em;
     width: 100%;
     color: white;
     margin-top: 0;
@@ -16,6 +15,10 @@
     padding: 0.5em;
     padding-right: 0;
     background-color: rgba(0,0,0,.75);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
   }
 }
 
@@ -25,5 +28,5 @@
   background-color: #000;
   color: #FFF;
   padding: 0.5em;
-  margin: 1em 0;
+  margin: 5em 0 1em 0;
 }

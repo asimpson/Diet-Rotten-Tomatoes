@@ -13,7 +13,8 @@ export default class MovieList extends React.Component {
     each(this.props.data, (n, key) => {
       let altText = `Poster for ${n.title}`;
       let bgStyle = {
-        backgroundImage: `url(${n.posters.detailed})`
+        backgroundImage: `url(${n.posters.detailed})`,
+        padding: '1em 1em 1em 0'
       };
 
       movieObj.push(
