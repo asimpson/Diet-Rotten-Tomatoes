@@ -30,7 +30,7 @@ class DRT extends React.Component {
     JSONP({
       url: url,
       success: (data) => { 
-        this.setState({[movieType]: data.movies});
+        this.setState({[movieType]: data.movies.slice(0,5)});
       }
     });
   }
