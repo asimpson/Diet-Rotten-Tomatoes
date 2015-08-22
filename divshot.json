@@ -1,0 +1,7 @@
+{
+  "name": "drt",
+  "root": "./",
+  "clean_urls": true,
+  "error_page": "error.html",
+  "exclude": ["node_modules/"]
+}
