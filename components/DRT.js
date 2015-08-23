@@ -2,6 +2,7 @@ import React from 'react';
 import JSONP from 'browser-jsonp';
 import MovieList from './MovieList';
 import Search from './Search';
+import parseURL from 'youarei';
 require ("../scss/_normalize.scss");
 
 const key = 'bfsqfcdktj8yt8bvu2d2fzq2'
@@ -24,6 +25,11 @@ class DRT extends React.Component {
   componentDidMount() {
     this.fetchMovies(boxOfficeUrl, "boxOffice")
     this.fetchMovies(dvdUrl, "dvds")
+    let urlParser = new parseURL(window.location.href);
+
+    if (urlParser.query_get().movie) {
+      this.searchMovies(urlParser.query_get().movie);
+    }
   }
 
   fetchMovies (url, movieType) {
