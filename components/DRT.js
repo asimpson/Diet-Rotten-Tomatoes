@@ -46,12 +46,21 @@ class DRT extends React.Component {
     this.fetchMovies(url, "searchResults");
   }
 
+  resetSearch () {
+    this.setState({["searchResults"]: ''});
+  }
+
   render () {
     let searchHeading = '';
     if (this.state.searchResults === '' || typeof this.state.searchResults === 'undefined') {
       searchHeading = null;
     } else {
-      searchHeading = <h1>Search Results:</h1>;
+      searchHeading = (
+        <span>
+          <button onClick={() => this.resetSearch()} className="reset">Reset</button>
+          <h1>Search Results:</h1>
+        </span>
+      );
     }
 
     return (
