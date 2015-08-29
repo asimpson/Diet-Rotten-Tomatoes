@@ -4,7 +4,7 @@ module.exports = {
   entry: [
     'webpack-dev-server/client?http://0.0.0.0:3000',
     'webpack/hot/only-dev-server',
-    './components/DRT.js'
+    './components/Root.js'
   ],
   output: {
     path: __dirname,

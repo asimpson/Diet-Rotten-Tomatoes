@@ -1,16 +1,9 @@
-import { devTools, persistState } from 'redux-devtools';
-// React components for Redux DevTools
-import { DevTools, DebugPanel, LogMonitor } from 'redux-devtools/lib/react';
-import React from 'react';
+import React, { Component } from 'react';
 import JSONP from 'browser-jsonp';
 import MovieList from './MovieList';
 import Search from './Search';
 import parseURL from 'youarei';
-import store from '../store.js';
 import searchRT from '../actions/actions.js';
-import searchTheMovies from '../reducers/search.js';
-import { compose, createStore, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
 import { Provider, connect } from 'react-redux';
 require ("../scss/_normalize.scss");
 
@@ -92,18 +85,6 @@ class DRT extends React.Component {
   }
 };
 
-// create a store that has redux-thunk middleware enabled
-const finalCreateStore = compose(
-  // Enables your middleware:
-  applyMiddleware(thunk),
-  // Provides support for DevTools:
-  devTools(),
-  // Lets you write ?debug_session=<name> in address bar to persist debug sessions
-  persistState(window.location.href.match(/[?&]debug_session=([^&]+)\b/)),
-  createStore
-);
-let theStore = finalCreateStore(searchTheMovies);
-
 // Map Redux state to component props
 function mapStateToProps(state)  {
   return {
@@ -118,18 +99,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-let App = connect(
-  mapStateToProps
-)(DRT);
-
-React.render(
-  <div>
-    <Provider store={theStore}>
-      {() => <App />}
-    </Provider>
-    <DebugPanel top right bottom>
-      <DevTools store={theStore} monitor={LogMonitor} />
-    </DebugPanel>
-  </div>,
-  document.getElementById('app')
-);
+export default connect(mapStateToProps)(DRT);
