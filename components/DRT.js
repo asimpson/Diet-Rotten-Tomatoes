@@ -52,14 +52,14 @@ class DRT extends React.Component {
   }
 
   resetSearch () {
-    this.setState({["searchResults"]: ''});
+    //this should be an action
+    this.props.dispatch(searchRT());
   }
 
   render () {
-    let searchHeading = '';
-    if (this.state.searchResults === '' || typeof this.state.searchResults === 'undefined') {
-      searchHeading = null;
-    } else {
+    let searchHeading = null;
+
+    if (this.props.searched) {
       searchHeading = (
         <span>
           <button onClick={() => this.resetSearch()} className="reset">Reset</button>
