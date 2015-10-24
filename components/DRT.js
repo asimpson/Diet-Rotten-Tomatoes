@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import JSONP from 'browser-jsonp';
 import MovieList from './MovieList';
 import Search from './Search';

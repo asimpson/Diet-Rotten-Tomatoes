@@ -3,7 +3,6 @@ var webpack = require('webpack');
 module.exports = {
   entry: [
     'webpack-dev-server/client?http://0.0.0.0:3000',
-    'webpack/hot/only-dev-server',
     './components/Root.js'
   ],
   output: {
@@ -15,16 +14,12 @@ module.exports = {
       { 
         test: /\.js$/, 
         exclude: /node_modules/,
-        loader: 'react-hot!babel'
+        loader: 'babel'
       },
       {
         test: /\.scss$/,
         loader: 'style!css!sass'
       }
     ]
-  },
-  plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
-  ]
+  }
 };

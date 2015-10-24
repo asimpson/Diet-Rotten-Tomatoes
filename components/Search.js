@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 require ("../scss/_search-box.scss");
 
 export default class Search extends React.Component {
@@ -8,7 +9,7 @@ export default class Search extends React.Component {
 
   parseSearch (e) {
     e.preventDefault();
-    let text = React.findDOMNode(this.refs.searchBox).value;
+    let text = ReactDOM.findDOMNode(this.refs.searchBox).value;
     this.props.onSearch(text);
   };
 
