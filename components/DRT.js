@@ -4,7 +4,7 @@ import JSONP from 'browser-jsonp';
 import MovieList from './MovieList';
 import Search from './Search';
 import parseURL from 'youarei';
-import { searchRT, fetchBoxOffice, fetchDVD } from '../actions/actions.js';
+import { searchRT, fetchBoxOffice, fetchDVD, clearSearch } from '../actions/actions.js';
 import { Provider, connect } from 'react-redux';
 require ("../scss/_normalize.scss");
 
@@ -52,18 +52,13 @@ class DRT extends React.Component {
     this.fetchMovies(url, "searchResults");
   }
 
-  resetSearch () {
-    const movies = [];
-    this.props.dispatch(searchRT(movies));
-  }
-
   render () {
     let searchResults = null;
 
     if (this.props.searched.length > 0) {
       searchResults = (
         <span>
-          <button onClick={() => this.resetSearch()} className="reset">Reset</button>
+          <button onClick={() => this.props.dispatch(clearSearch())} className="reset">Reset</button>
           <h2>Search Results:</h2>
           <MovieList data={this.props.searched} />
         </span>

@@ -1,5 +1,5 @@
 import 'babel-core/polyfill';
-import { SEARCH_MOVIE, FETCH_DVD, FETCH_BOXOFFICE } from '../actions/actions.js'; 
+import { SEARCH_MOVIE, FETCH_DVD, FETCH_BOXOFFICE, CLEAR_SEARCH } from '../actions/actions.js'; 
 
 const initialState = {
   searched: [],
@@ -20,6 +20,10 @@ function DRTState(state = initialState, action) {
     case "FETCH_DVD":
       return Object.assign({}, state, {
         dvd: action.movies
+      });  
+    case "CLEAR_SEARCH":
+      return Object.assign({}, state, {
+        searched: []
       });  
     default:
       return state;
