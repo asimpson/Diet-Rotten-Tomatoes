@@ -1,5 +1,15 @@
 export const SEARCH_MOVIE = 'SEARCH_MOVIE';
+export const FETCH_BOXOFFICE = 'FETCH_BOXOFFICE';
+export const FETCH_DVD = 'FETCH_DVD';
 
-export default function searchRT(movie) {
-  return { type: SEARCH_MOVIE, movie };
+export function searchRT(movies) {
+  return { type: SEARCH_MOVIE, movies };
+}
+
+export function fetchBoxOffice(movies) {
+  return { type: FETCH_BOXOFFICE, movies };
+}
+
+export function fetchDVD(movies) {
+  return { type: FETCH_DVD, movies};
 }

@@ -1,15 +1,29 @@
 import 'babel-core/polyfill';
-import SEARCH_MOVIE from '../actions/actions.js'; 
+import { SEARCH_MOVIE, FETCH_DVD, FETCH_BOXOFFICE } from '../actions/actions.js'; 
 
-function searchTheMovies(state = {}, action) {
+const initialState = {
+  searched: [],
+  boxoffice: [],
+  dvd: []
+};
+
+function searchTheMovies(state = initialState, action) {
   switch (action.type) {
-  case "SEARCH_MOVIE":
-    return Object.assign({}, state, {
-      searched: action.movie
-    });  
-  default:
-    return state;
-  }
+    case "SEARCH_MOVIE":
+      return Object.assign({}, state, {
+        searched: action.movies
+      });  
+    case "FETCH_BOXOFFICE":
+      return Object.assign({}, state, {
+        boxoffice: action.movies
+      });  
+    case "FETCH_DVD":
+      return Object.assign({}, state, {
+        dvd: action.movies
+      });  
+    default:
+      return state;
+    }
 }
 
 export default searchTheMovies;
