@@ -29,11 +29,6 @@ class DRT extends React.Component {
     }
   }
 
-  // my data is chaning when I get new data from the API
-  // 1. get new data
-  // 2. initiate action to update state
-  // 3. action fires reducer? which puts out new state
-  // 4. updates happen via props
   fetchMovies (url, movieType) {
     JSONP({
       url: url,
@@ -58,8 +53,8 @@ class DRT extends React.Component {
   }
 
   resetSearch () {
-    //this should be an action
-    this.props.dispatch(searchRT([]));
+    const movies = [];
+    this.props.dispatch(searchRT(movies));
   }
 
   render () {

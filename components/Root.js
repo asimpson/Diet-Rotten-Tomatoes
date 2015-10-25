@@ -1,17 +1,16 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { compose, createStore, applyMiddleware } from 'redux';
+import { createStore } from 'redux';
 import { Provider, connect } from 'react-redux';
-import searchTheMovies from '../reducers/search.js';
-import store from '../store/store.js';
+import DRTState from '../reducers/reducer.js';
 import DRT from './DRT.js';
 
-const theStore = createStore(searchTheMovies);
+const store = createStore(DRTState);
 
 export default class Root extends Component {
   render () {
     return (
-      <Provider store={theStore}>
+      <Provider store={store}>
         <DRT />
       </Provider>
     );

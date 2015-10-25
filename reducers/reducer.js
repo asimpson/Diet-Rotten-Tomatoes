@@ -7,7 +7,7 @@ const initialState = {
   dvd: []
 };
 
-function searchTheMovies(state = initialState, action) {
+function DRTState(state = initialState, action) {
   switch (action.type) {
     case "SEARCH_MOVIE":
       return Object.assign({}, state, {
@@ -26,4 +26,4 @@ function searchTheMovies(state = initialState, action) {
     }
 }
 
-export default searchTheMovies;
+export default DRTState;
