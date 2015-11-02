@@ -4,14 +4,14 @@ require('../scss/_movie-list.scss');
 
 const MovieList = (props) => {
 
-  const movies = props.data.map((x) => {
+  const movies = props.data.map((x, i) => {
     const bg = {
       backgroundImage: `url(${x.posters.detailed})`,
       padding: '1em 1em 1em 0'
     }
 
     return (
-      <div key={x.title} className="movie">
+      <div key={i} className="movie">
         <div style={bg}>
           <h1>{x.title}</h1>
           <div className="movie-ratings">

@@ -10,14 +10,12 @@ const middlewareStore = applyMiddleware(thunk)(createStore);
 
 const store = middlewareStore(DRTState);
 
-export default class Root extends Component {
-  render () {
+const Root = (props) => {
     return (
       <Provider store={store}>
         <DRT />
       </Provider>
     );
-  }
-};
+}
 
 ReactDOM.render(<Root />, document.getElementById('app'));
