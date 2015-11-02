@@ -1,18 +1,12 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import JSONP from 'browser-jsonp';
 import MovieList from './MovieList';
 import Search from './Search';
 import parseURL from 'youarei';
-import { searchRT, fetchBoxOffice, fetchDVD, clearSearch } from '../actions/actions.js';
+import { fetchMovies, fetchDVD, clearSearch, searchMovies} from '../actions/actions.js';
 import { Provider, connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 require ("../scss/_normalize.scss");
-
-const key = 'bfsqfcdktj8yt8bvu2d2fzq2'
-const apiEndpoint = 'http://api.rottentomatoes.com/api/public/v1.0'
-const boxOfficeUrl = `${apiEndpoint}/lists/movies/box_office.json?apikey=${key}&limit=5&country=us`;
-const dvdUrl = `${apiEndpoint}/lists/dvds/top_rentals.json?apikey=${key}&limit=5&country=us`;
-const searchUrl = `${apiEndpoint}/movies.json?apikey=${key}&limit=5&country=us&q=`; 
 
 class DRT extends React.Component {
   constructor(props) {
@@ -20,36 +14,13 @@ class DRT extends React.Component {
   }
 
   componentDidMount() {
-    this.fetchMovies(boxOfficeUrl, "boxOffice");
-    this.fetchMovies(dvdUrl, "dvds");
+    this.props.fetchMovies();
+    this.props.fetchDVD();
     let urlParser = new parseURL(window.location.href);
 
     if (urlParser.query_get().movie) {
-      this.searchMovies(urlParser.query_get().movie);
+      this.props.searchMovies(urlParser.query_get().movie);
     }
-  }
-
-  fetchMovies (url, movieType) {
-    JSONP({
-      url: url,
-      success: (data) => { 
-        switch (movieType) {
-          case "searchResults":
-            return this.props.dispatch(searchRT(data.movies.slice(0,5)));
-          case "boxOffice":
-            return this.props.dispatch(fetchBoxOffice(data.movies.slice(0,5)));
-          case "dvds":
-            return this.props.dispatch(fetchDVD(data.movies.slice(0,5)));
-          default:
-            return data.movies;
-        }
-      }
-    });
-  }
-
-  searchMovies (searchText) {
-    let url = `${searchUrl}${searchText}`;
-    this.fetchMovies(url, "searchResults");
   }
 
   render () {
@@ -58,7 +29,7 @@ class DRT extends React.Component {
     if (this.props.searched.length > 0) {
       searchResults = (
         <span>
-          <button onClick={() => this.props.dispatch(clearSearch())} className="reset">Reset</button>
+          <button onClick={() => this.props.clearSearch()} className="reset">Reset</button>
           <h2>Search Results:</h2>
           <MovieList data={this.props.searched} />
         </span>
@@ -67,7 +38,7 @@ class DRT extends React.Component {
 
     return (
       <div className="drt">
-        <Search onSearch={(e) => this.searchMovies(e)}/>
+        <Search onSearch={(text) => this.props.searchMovies(text)}/>
         {searchResults}
         <h2>Box Office:</h2>
         <MovieList data={this.props.boxOffice} />
@@ -90,4 +61,16 @@ function mapStateToProps(state)  {
   };
 }
 
-export default connect(mapStateToProps)(DRT);
+function mapDispatchToProps(dispatch)  {
+  return {
+    fetchMovies: bindActionCreators(fetchMovies, dispatch),
+    fetchDVD: bindActionCreators(fetchDVD, dispatch),
+    clearSearch: bindActionCreators(clearSearch, dispatch),
+    searchMovies: bindActionCreators(searchMovies, dispatch)
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(DRT);

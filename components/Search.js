@@ -15,7 +15,7 @@ export default class Search extends React.Component {
 
   render () {
     return (
-      <form onSubmit={e => this.parseSearch(e)} >
+      <form onSubmit={(e) => this.parseSearch(e)} >
         <label htmlFor="movie-search">Search</label>
         <div className="side-by-side--wrapper" >
           <input placeholder="Search" ref="searchBox" type="search" name="movie-search" className="search-input side-by-side side-by-side--major"/>
