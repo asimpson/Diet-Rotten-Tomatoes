@@ -1,20 +1,16 @@
 import React from 'react';
 
-export default class Score extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    let scoreStyle = {
-      color: (this.props.score < 50) ? '#07FF07' : 'red'
+const Score = (props) => {
+    const scoreStyle = {
+      color: (props.score < 50) ? '#07FF07' : 'red'
     };
 
     return (
       <div>
-        <span className="score-title">{this.props.name}: </span>
-        <span className="score" style={scoreStyle}>{this.props.score}</span>
+        <span className="score-title">{props.name}: </span>
+        <span className="score" style={scoreStyle}>{props.score}</span>
       </div>
     );
-  }
 }
+
+export default Score;
